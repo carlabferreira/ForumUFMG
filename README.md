@@ -30,3 +30,7 @@ Outros recursos opcionais a serem adicionados futuramente são:
 - JavaScript (incluindo Node.js, React, JQuery), HTML, CSS e MySQL
 - Deploy do FrontEnd: Netlify
 - Deploy do BackEnd: Render
+
+### LINKS ÚTEIS
+- Docs com as documentações e discussões do desenvolvimento, diagramas e demais soluções: https://docs.google.com/document/d/1JUHsqZIGanjyH-69xnGw0U9DaDIPA1IRotk2bcr1izQ/edit?usp=sharing
+- Projeto com histórias e tarefas: https://github.com/users/carlabferreira/projects/9 
