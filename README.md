@@ -34,3 +34,18 @@ Outros recursos opcionais a serem adicionados futuramente são:
 ### LINKS ÚTEIS
 - Docs com as documentações e discussões do desenvolvimento, diagramas e demais soluções: https://docs.google.com/document/d/1JUHsqZIGanjyH-69xnGw0U9DaDIPA1IRotk2bcr1izQ/edit?usp=sharing
 - Projeto com histórias e tarefas: https://github.com/users/carlabferreira/projects/9 
+
+## Instalação
+
+### Client
+
+  1. `$ cd client`
+  2. `$ npm install` or `$ yarn install`
+  3. `$ npm start` or `$ yarn start`
+
+### Server
+
+  1. mude o banco de dados para ficar compatível
+  2. `$ cd server`
+  3. `$ npm install` or `$ yarn`
+  4. `$ npm rum devStart`
