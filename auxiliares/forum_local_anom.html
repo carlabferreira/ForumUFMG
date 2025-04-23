@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Forum</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .container > h2 {
+                background: linear-gradient(145deg, #ff7e5f, #feb47b); /* Gradiente bonito */
+                padding: 15px 20px;
+                font-weight: bold; /* Negrito */
+                font-size: 24px; /* Tamanho maior */
+                text-align: center; /* Centraliza o texto */
+                color: white; /* Cor do texto */
+                border-radius: 8px; /* Bordas arredondadas */
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+                margin: 20px 0; /* Espaçamento externo */
+            }
+
+            .thread {
+                padding: 10px;
+                border: 1px dashed #ccc;
+                border-radius: 8px; /* Bordas arredondadas para as threads */
+            }
+
+            .respostas {
+                margin: 0 10px;
+            }
+
+            .respostas p {
+                font-size: 18px;
+                color: #333;
+            }
+
+            textarea {
+                width: 100%;
+                height: 40px;
+                border: 1px solid #ccc;
+                border-radius: 5px; /* Bordas arredondadas para o textarea */
+                padding: 5px;
+                margin-top: 10px;
+            }
+
+            input[type="submit"] {
+                background-color: #4CAF50; /* Cor de fundo */
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px; /* Bordas arredondadas */
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 10px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #45a049; /* Efeito hover */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Fórum</h2> <!-- Corrigido para <h2> e removido o erro com <he> -->
+            <div class="thread">
+                <h2>Alguém responderia minha pergunta? <button>Mostrar Respostas</button></h2>
+                <div style="display:none;" class="respostas">
+                    <p>Sim</p>
+                    <hr>
+                    <p>Jamais</p>
+                    <hr>
+                    <p>Claro!</p>
+                    <hr>
+                    <form>
+                        <textarea></textarea>
+                        <input type="submit" name="acao" value="Enviar!" />
+                    </form>
+                </div>
+            </div><!--thread-->
+        </div>
+        <script>
+            let buttonsResposta = document.querySelectorAll('.thread button');
+            /*Com Jquery seria mais rápido*/
+            for (let i = 0; i < buttonsResposta.length; i++) {
+                buttonsResposta[i].addEventListener('click', () => {
+                    let respostas = document.querySelectorAll(".respostas");
+                    respostas[i].style.display = "block";
+                })
+            }
+
+            let forms = document.querySelectorAll('form');
+            
+            for (let i = 0; i < buttonsResposta.length; i++) {
+                forms[i].addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let conteudo = document.querySelectorAll('textarea')[i];
+                    forms[i].insertAdjacentHTML('beforebegin', '<p>' + conteudo.value + '</p>');
+                    conteudo.value = "";
+                })
+            }
+        </script> 
+    </body>
+</html>
