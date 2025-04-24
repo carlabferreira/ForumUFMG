@@ -49,3 +49,8 @@ Outros recursos opcionais a serem adicionados futuramente são:
   2. `$ cd server`
   3. `$ npm install` or `$ yarn`
   4. `$ npm rum devStart`
+
+
+## 📚 Navegação
+- [⚙️ Instruções de Instalação](./server/INSTALLATION.md)
+- [🔗 Referências Bibliográficas](./REFERENCES.md)
