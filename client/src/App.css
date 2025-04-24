@@ -1,39 +1,59 @@
 .container {
-  width: 200px;
-  height: max-content;
+  width: 300px;
   margin: auto;
   background-color: #ebebeb;
-  padding: 20px 15px;
-  margin-top: 120px;
-  border-radius: 7px;
+  padding: 25px 20px;
+  margin-top: 100px;
+  border-radius: 10px;
   font-family: Roboto, sans-serif;
   box-shadow: 10px 11px rgba(0, 0, 0, 0.7);
 }
+
 h1 {
   margin: 0;
   text-align: left;
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
-.login-form {
-  padding: 5px;
+.form-group,
+.login-form-group,
+.register-form-group {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-field {
-  display: inline-block;
-  padding: 5px;
-  margin-top: 20px;
-  transition: all 0.2s ease-in-out;
+  padding: 6px;
+  margin-top: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
 .form-error {
   display: block;
   color: red;
-  font-size: 0.9em;
-  font-weight: 600;
+  font-size: 14px; /* Reduzindo o tamanho da fonte */
+  font-weight: 600; /* Negrito */
 }
 
+
 .button {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+  background-color: #0057b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  margin-bottom: 40px; /* Aumentando a distância inferior */
+}
+
+.button:hover {
+  background-color: #00418c;
 }
