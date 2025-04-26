@@ -48,15 +48,22 @@
     <img src="https://github.com/user-attachments/assets/001a8a54-7d2c-4990-9cd4-bf0676e48d6f" width=80%>
   </p>   
 
-11. Consultar tópicos:
+10. Consultar tópicos:
 
   <p align="center">
     <img src="https://github.com/user-attachments/assets/4c08a9dc-a5d2-42b9-9ca8-2cac8b061db3" width=80%>
   </p>
   
-13. Adicionar tópico:
+11. Adicionar tópico:
 
   <p align="center">
     <img src="https://github.com/user-attachments/assets/4338a11a-de27-48b7-a3e4-640836efb5d2" width=80%>
   </p>
   <p align="center">Obs: para criar um tópico, o usuário deve estar logado e as tags inseridas já devem estar no banco de dados</p>
+
+12. Deletar tópico:
+
+  <p align="center">
+    <img src="https://github.com/user-attachments/assets/71d8d48d-d4de-4cf1-815d-d386286a4edc" width=80%>
+  </p>
+  <p align="center">Obs: o usuário pode apenas deletar os tópicos criados por ele mesmo</p>
