@@ -2,8 +2,14 @@
 
 1. Clone o repositório
 2. Entre na pasta /server (`cd server`)
-3. Instale as dependências (`yarn install`)
-4. Inicie a aplicação (`yarn start` ou `npm rum devStart`)
+3. Crie um arquivo *.env* na pasta server e insira as informações abaixo:
+   <br>
+   `db_user="root"`<br>
+   `db_pass="senha"`<br>
+   `db_schema="banco"`<br>
+   *Obs:*  mude apenas o que está entre parênteses, conforme seus dados no MySQL
+5. Instale as dependências (`yarn install`)
+6. Inicie a aplicação (`yarn start` ou `npm rum devStart`)
 
 
 # Intruções para testar somente o backend (sem o front conectado)
