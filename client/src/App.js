@@ -10,6 +10,9 @@ function App() {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
+  const [showTagForm, setShowTagForm] = useState(false);
+  const [tagName, setTagName] = useState("");
+
   const handleLogin = (values) => {
     Axios.post("http://localhost:3002/server/auth/login", {
       email: values.email,
@@ -74,13 +77,53 @@ function App() {
     setUser(null);
   };
 
+  const handleTagCreation = (tagName) => {
+    Axios.post("http://localhost:3002/server/tags/criarTag", {
+      nome: tagName,
+    }).then((response) => {
+      alert(response.data.msg);
+    });
+  };
+
   return (
     <div className="container">
       {user ? (
-        <div>
-          <h1>Bem-vindo, {user.nome || user.email}!</h1>
-          <button className="button" onClick={logout}>Logout</button>
-        </div>
+        user.tipo === "Técnico-Administrativo" ? 
+        (
+          <div>
+            <h1>Bem-vindo, Técnico {user.nome || user.email}!</h1>
+            <button className="button" onClick={logout}>Logout</button>
+            <button className="button" onClick={() => setShowTagForm(true)}>Criar Tag</button>
+            
+            {showTagForm && (
+              <div className="tag-form">
+                <h2>Criar Tag</h2>
+                <input
+                  type="text"
+                  value={tagName}
+                  onChange={(e) => setTagName(e.target.value)}
+                  placeholder="Nome da Tag"
+                />
+                <button className="button" onClick={() => handleTagCreation( tagName )}>Criar</button>
+                <button className="button" onClick={() => setShowTagForm(false)}>Cancelar</button>
+              </div>
+            )}
+
+          </div>
+        ) : (
+          user.tipo === "Professor" ? 
+          (
+            <div>
+              <h1>Bem-vindo, Professor {user.nome || user.email}!</h1>
+              <button className="button" onClick={logout}>Logout</button>
+            </div>
+          ) : (
+                <div>
+                  <h1>Bem-vindo, {user.nome || user.email}!</h1>
+                  <button className="button" onClick={logout}>Logout</button>
+                </div>
+              )
+            ) 
       ) : (
         <>
           <h1>Login</h1>
