@@ -2,14 +2,17 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo/icon_without_bg.png" />
+    <!--<link rel="icon" href="%PUBLIC_URL%/logo/icon_without_bg.png" /> -->
+    <link rel="icon" href="../public/logo/icon_forum.ico" />
+    <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Fórum UFMG – Um espaço para tirar as suas dúvidas e ajudar os outros na UFMG"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />-->
+    <link rel="apple-touch-icon" href="../public/logo/icon_forum.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -27,7 +30,48 @@
     <title>Fórum UFMG</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <section id="app">
+      <header>  
+          <img id="logo" src="../public/logo/logo_with_speech_bubble_without_background_2.png" alt="Fórum UFMG">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+          <nav>
+              <ul>
+                  <li>
+                      <a href="#" onclick="changeContent('inicio')">
+                        <img src="../public/icons/home.png" alt="Início" class="icon"> 
+                        Início
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" onclick="changeContent('novoTopico')">
+                        <img src="../public/icons/plus.png" alt="Novo Tópico" class="icon" id="plus-icon">
+                        Novo Tópico
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" onclick="changeContent('busca')">
+                        <img src="../public/icons/loupe.png" alt="Busca" class="icon">
+                        Busca
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" onclick="changeContent('entrar')">
+                        <img src="../public/icons/person.png" alt="Entrar" class="icon" id="person-icon">
+                        Entrar
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+      </header>
+      <main>
+        <a>Teste</a>
+      </main>
+      <footer>
+        <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik</a> 
+          from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <p>&copy; 2025 Fórum UFMG. Todos os direitos reservados.</p>
+      </footer>
+    </section>
+    <div id="root"></div> <!-- //?? não sei o que tô fazendo nessa parte aqui-->
+    <script src="index.js" type="module"></script>
   </body>
 </html>
