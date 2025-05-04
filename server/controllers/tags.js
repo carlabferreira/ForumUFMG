@@ -30,3 +30,11 @@ export const criarTag = (req, res) => {
       }
     });
 };
+
+export const getTags = (req, res) => {
+  const q = "SELECT * FROM tags";
+  db.query(q, (err, data) => {
+      if (err) return res.status(500).json(err);
+      return res.json(data);
+  });
+};

@@ -1,30 +1,31 @@
-// src/pages/CreateTopic.js
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../styles/CreateTopic.css";
 
 function CreateTopic() {
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [categoriaId, setCategoriaId] = useState("");
-  const [tags, setTags] = useState("");
   const [imagem, setImagem] = useState("");
   const [categorias, setCategorias] = useState([]);
+  const [tagsDisponiveis, setTagsDisponiveis] = useState([]);
+  const [tagsSelecionadas, setTagsSelecionadas] = useState([]);
   const [erro, setErro] = useState("");
   const navigate = useNavigate();
 
-  // Buscar categorias do backend quando o componente for montado
   useEffect(() => {
+    // Buscar categorias
     axios.get("/server/categorias")
-    .then((res) => {
-      console.log("Categorias recebidas:", res.data);
-      setCategorias(res.data);
-    })
-    .catch((err) => console.error("Erro ao carregar categorias:", err));
-}, []);
+      .then((res) => setCategorias(res.data))
+      .catch((err) => console.error("Erro ao carregar categorias:", err));
 
-  // Função para criar o tópico
+    // Buscar tags
+    axios.get("/server/tags")
+      .then((res) => setTagsDisponiveis(res.data))
+      .catch((err) => console.error("Erro ao carregar tags:", err));
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErro("");
@@ -42,48 +43,56 @@ function CreateTopic() {
           descricao,
           categoria_id: categoriaId,
           imagem,
-          tags: tags.split(",").map((tag) => tag.trim()).filter((tag) => tag !== ""),
+          tags: tagsSelecionadas,
         },
         { withCredentials: true }
       );
-      navigate("/"); // Redireciona para a home ou lista de tópicos
+      navigate("/");
     } catch (err) {
       console.error(err);
       setErro(err.response?.data || "Erro ao criar tópico.");
     }
   };
 
+  const toggleTag = (tagId) => {
+    setTagsSelecionadas((prev) =>
+      prev.includes(tagId)
+        ? prev.filter((id) => id !== tagId)
+        : [...prev, tagId]
+    );
+  };
+
   return (
-    <div className="create-topic-container" style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
+    <div className="create-topic-container">
       <h2>Criar Novo Tópico</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "10px" }}>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="form-group">
           <label>Título *</label>
           <input
             type="text"
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
             required
-            style={{ width: "100%", padding: "8px" }}
+            className="form-field"
           />
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div className="form-group">
           <label>Descrição *</label>
           <textarea
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
             required
             rows={5}
-            style={{ width: "100%", padding: "8px" }}
+            className="form-field"
           ></textarea>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div className="form-group">
           <label>Categoria *</label>
           <select
             value={categoriaId}
             onChange={(e) => setCategoriaId(e.target.value)}
             required
-            style={{ width: "100%", padding: "8px" }}
+            className="form-field"
           >
             <option value="">Selecione uma categoria</option>
             {categorias.map((categoria) => (
@@ -93,28 +102,34 @@ function CreateTopic() {
             ))}
           </select>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div className="form-group">
           <label>Imagem (URL)</label>
           <input
             type="text"
             value={imagem}
             onChange={(e) => setImagem(e.target.value)}
             placeholder="Opcional"
-            style={{ width: "100%", padding: "8px" }}
+            className="form-field"
           />
         </div>
-        <div style={{ marginBottom: "10px" }}>
-          <label>Tags (separadas por vírgula)</label>
-          <input
-            type="text"
-            value={tags}
-            onChange={(e) => setTags(e.target.value)}
-            placeholder="ex: programação, dúvida"
-            style={{ width: "100%", padding: "8px" }}
-          />
+        <div className="form-group">
+          <label>Tags</label>
+          <div className="tags-list">
+            {tagsDisponiveis.map((tag) => (
+              <label key={tag.id} className="tag-checkbox">
+                <input
+                  type="checkbox"
+                  value={tag.id}
+                  checked={tagsSelecionadas.includes(tag.id)}
+                  onChange={() => toggleTag(tag.id)}
+                />
+                {tag.nome}
+              </label>
+            ))}
+          </div>
         </div>
-        {erro && <p style={{ color: "red" }}>{erro}</p>}
-        <button type="submit" style={{ padding: "10px 20px", cursor: "pointer" }}>
+        {erro && <p className="form-error">{erro}</p>}
+        <button type="submit" className="button">
           Criar Tópico
         </button>
       </form>
