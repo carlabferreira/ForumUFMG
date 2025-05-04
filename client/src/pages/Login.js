@@ -47,6 +47,11 @@ function LoginPage({ setUser }) {
             Não tem uma conta? <Link className="link-cadastro" to="/cadastro">Criar conta</Link>
         </p>
       </div>
+      <div className="register-redirect">
+        <p>
+            <Link className="link-cadastro" to="/">Voltar para a Página Inicial</Link>
+        </p>
+      </div>
     </div>
   );
 }

@@ -73,6 +73,11 @@ function RegisterPage() {
               Já é cadastrado? <Link className="link-login" to="/login">Fazer login</Link>
           </p>
       </div>
+      <div className="login-redirect">
+        <p>
+            <Link className="link-login" to="/">Voltar para a Página Inicial</Link>
+        </p>
+      </div>
     </div>
   );
 }
