@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom"
-import "../styles/CreateTopic.css";
+import { Link } from "react-router-dom";
+import Select from 'react-select';
 import left_arrow from "../icons/left.png";
+import "../styles/CreateTopic.css";
 
 function CreateTopic() {
   const [titulo, setTitulo] = useState("");
@@ -45,7 +46,7 @@ function CreateTopic() {
           descricao,
           categoria_id: categoriaId,
           imagem,
-          tags: tagsSelecionadas,
+          tags: tagsSelecionadas.map(tag => tag.value), // Alterado para utilizar o valor da tag
         },
         { withCredentials: true }
       );
@@ -54,14 +55,6 @@ function CreateTopic() {
       console.error(err);
       setErro(err.response?.data || "Erro ao criar tópico.");
     }
-  };
-
-  const toggleTag = (tagId) => {
-    setTagsSelecionadas((prev) =>
-      prev.includes(tagId)
-        ? prev.filter((id) => id !== tagId)
-        : [...prev, tagId]
-    );
   };
 
   return (
@@ -116,19 +109,19 @@ function CreateTopic() {
         </div>
         <div className="form-group">
           <label>Tags</label>
-          <div className="tags-list">
-            {tagsDisponiveis.map((tag) => (
-              <label key={tag.id} className="tag-checkbox">
-                <input
-                  type="checkbox"
-                  value={tag.id}
-                  checked={tagsSelecionadas.includes(tag.id)}
-                  onChange={() => toggleTag(tag.id)}
-                />
-                {tag.nome}
-              </label>
-            ))}
-          </div>
+          <Select
+            options={tagsDisponiveis.map(tag => ({
+              value: tag.id,
+              label: tag.nome,
+            }))}
+            isMulti
+            isSearchable
+            value={tagsSelecionadas}
+            onChange={setTagsSelecionadas}
+            placeholder="Selecione ou busque tags..."
+            className="react-select-container"
+            classNamePrefix="react-select"
+          />
         </div>
         {erro && <p className="form-error">{erro}</p>}
         <button type="submit" className="button">
@@ -137,10 +130,10 @@ function CreateTopic() {
       </form>
       <div className="topic-redirect">
         <p>
-            <Link className="link-topic" to="/">
-              <img src={left_arrow} id="arrow"/>
-              Voltar para a página inicial
-            </Link>
+          <Link className="link-topic" to="/">
+            <img src={left_arrow} id="arrow" alt="Voltar" />
+            Voltar para a página inicial
+          </Link>
         </p>
       </div>
     </div>
