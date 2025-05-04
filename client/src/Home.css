@@ -42,11 +42,16 @@ body {
     font-size: 18px;
     color: #333;
     font-weight: bold;
-    transition: color 0.3s;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 25px; /* Borda arredondada */
+    transition: all 0.3s ease;
   }
   
   nav ul li a:hover {
-    color: #007bff;
+    color: white;
+    background-color: #007bff; /* Cor de fundo ao passar o mouse */
+    border-color: #007bff; /* Mudança da borda para combinar com o fundo */
   }
   
   /* Rodapé */
