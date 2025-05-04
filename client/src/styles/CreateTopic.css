@@ -28,14 +28,14 @@
   color: #000000;
 }
 
-.create-topic-form-group {
+.form-group {
   margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.create-topic-form-field {
+.form-field {
   padding: 8px;
   margin-top: 6px;
   border-radius: 5px;
@@ -46,12 +46,12 @@
   transition: border-color 0.2s ease;
 }
 
-.create-topic-form-field:focus {
+.form-field:focus {
   border-color: #ad0c27;
   outline: none;
 }
 
-.create-topic-error {
+.form-error {
   display: block;
   color: red;
   font-size: 14px;
@@ -64,7 +64,7 @@
   border-radius: 5px;
 }
 
-.create-topic-button {
+.button {
   width: 100%;
   padding: 10px;
   background-color: #ad0c27;
@@ -77,37 +77,19 @@
   margin-top: 15px;
 }
 
-.create-topic-button:hover {
+.button:hover {
   background-color: #78091c;
 }
 
-.tags-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.tag-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background-color: #f0f0f0;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.topic-redirect{
+.topic-redirect {
   font-size: small;
-  ;
 }
 
-.link-topic{
+.link-topic {
   color: #ad0c27;
 }
 
-#arrow{
+#arrow {
   max-width: 15px;
   max-height: auto;
   padding: 0 10px;
