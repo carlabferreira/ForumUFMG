@@ -1,91 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); /* Importando a fonte Open Sans */
+
 /* Geral */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
   }
   
-  /* Container principal */
-  #container {
+/* Container principal */
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+}
+  
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+  
+#logo {
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+  
+/* Barra de navegação */
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+  
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+  
+nav ul li a {
+  text-decoration: none;
+  font-size: 20px;
+  /*color: #333;*/
+  color: black;
+  font-weight: normal;
+  padding: 10px 20px;
+  vertical-align: middle;
+  /*border: 2px solid #333;
+  border-radius: 25px; /* Borda arredondada */
+  transition: all 0.3s ease;
+}
+  
+nav ul li a:hover {
+  color: rgb(86, 86, 86); /* Muda a cor do texto quando passa o mouse */
+  /*background-color: #007bff; /* Cor de fundo ao passar o mouse */
+  /*border-color: #007bff; /* Mudança da borda para combinar com o fundo */
+}
+  
+/* configuração dos ícones do menu*/
+.icon{
+  max-width: 25px;
+  max-height: auto;
+  padding: 0 15px;
+  vertical-align: middle;
+}
+  
+/* Rodapé */
+footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  width: 100%;
+}
+  
+footer p {
+  margin: 0;
+}
+
+footer div{
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+  
+  /* Ajustes para telas menores */
+@media (max-width: 768px) {
+  #logo {
+    max-width: 250px;
+  }
+  
+  nav ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 100vh;
-    padding: 20px;
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  #logo {
-    max-width: 300px;
-    margin-bottom: 20px;
-  }
-  
-  /* Navegação */
-  nav ul {
-    list-style: none;
-    padding: 0;
   }
   
   nav ul li {
-    display: inline-block;
-    margin: 0 15px;
+    margin: 10px 0;
   }
   
   nav ul li a {
-    text-decoration: none;
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: 2px solid #333;
-    border-radius: 25px; /* Borda arredondada */
-    transition: all 0.3s ease;
+    font-size: 16px;
   }
-  
-  nav ul li a:hover {
-    color: white;
-    background-color: #007bff; /* Cor de fundo ao passar o mouse */
-    border-color: #007bff; /* Mudança da borda para combinar com o fundo */
-  }
-  
-  /* Rodapé */
-  footer {
-    text-align: center;
-    margin-top: auto;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    width: 100%;
-  }
-  
-  footer p {
-    margin: 0;
-  }
-  
-  /* Ajustes para telas menores */
-  @media (max-width: 768px) {
-    #logo {
-      max-width: 250px;
-    }
-  
-    nav ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    nav ul li {
-      margin: 10px 0;
-    }
-  
-    nav ul li a {
-      font-size: 16px;
-    }
-  }
+}
   
