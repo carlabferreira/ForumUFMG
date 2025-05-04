@@ -43,7 +43,24 @@ function Home() {
         </nav>
       </header>
       <main>
-        <a>Teste para ver onde o texto aparece</a>
+        <p>Teste para ver onde o texto aparece</p>
+        <div className="sobre-nos">
+          <h2>Sobre nós</h2>
+          <p>
+            O Fórum UFMG é um projeto desenvolvido por quatro alunos do curso de Sistemas de Informação da UFMG.
+            O seu objetivo é ser um espaço para tirar dúvidas, ajudar colegas e compartilhar conhecimento sobre a vida acadêmica!
+            <p>
+              Para entrar em contato, envie um e-mail para <a href="mailto:contato@forum.ufmg.com">contato@forum.ufmg.com</a>
+            </p>
+          </p>
+        </div>
+        <div className="sugestoes">
+          <h2>Sugestões</h2>
+          <p>
+            O Fórum UFMG é um projeto em desenvolvimento e estamos abertos a sugestões e feedbacks!
+            Caso queira sugerir uma tag ou ideia para aprimoramento do Fórum, por favor entre em contato pelo e-mail <a href="mailto:sugestoes@forum.ufmg.com">sugestoes@forum.ufmg.com</a>
+          </p>
+        </div>
       </main>
       <footer>
       <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik</a> 

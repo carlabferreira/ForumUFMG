@@ -11,15 +11,19 @@ body {
   
 /* Container principal */
 #container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 100vh;
-  padding: 20px;
+  min-height: 100vh;
+  /*padding: 20px;*/
 }
   
 header {
+  grid-row: 1/2;
+  grid-column: 1/6;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -69,17 +73,49 @@ nav ul li a:hover {
   padding: 0 15px;
   vertical-align: middle;
 }
+
+/* Estilização do conteúdo principal */
+main{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column: 1 / 6;
+  grid-row: 2 / 5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilização das caixas de texto Sobre Nós e Sugestões */
+.sobre-nos, .sugestoes {
+  grid-column: 5/6;
+  font-size: 13px;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.sobre-nos{
+  grid-row: 2/3;
+}
+
+.sugestoes{
+  grid-row: 3/4;
+}
   
 /* Rodapé */
 footer {
+  grid-row: 5/6;
+  grid-column: 1/6;
   text-align: center;
   margin-top: auto;
   padding: 10px;
   background-color: #333;
   color: white;
   width: 100%;
+  font-size: 12px;
 }
-  
+
 footer p {
   margin: 0;
 }
