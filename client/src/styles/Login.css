@@ -5,3 +5,10 @@
 .link-cadastro {
     color: #ad0c27;
 }
+
+#arrow{
+    max-width: 15px;
+    max-height: auto;
+    padding: 0 10px;
+    vertical-align: middle;
+}

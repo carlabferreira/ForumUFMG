@@ -4,6 +4,7 @@ import { loginSchema } from "../validations/schemas";
 import { authLogin } from "../services/authService";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
+import left_arrow from "../icons/left.png"
 
 function LoginPage({ setUser }) {
   const navigate = useNavigate();
@@ -49,7 +50,9 @@ function LoginPage({ setUser }) {
       </div>
       <div className="register-redirect">
         <p>
-            <Link className="link-cadastro" to="/">Voltar para a Página Inicial</Link>
+          <Link className="link-cadastro" to="/">
+            <img src={left_arrow} id="arrow"/>
+            Voltar para a Página Inicial</Link>
         </p>
       </div>
     </div>

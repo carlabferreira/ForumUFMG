@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
 import "../styles/CreateTopic.css";
+import left_arrow from "../icons/left.png";
 
 function CreateTopic() {
   const [titulo, setTitulo] = useState("");
@@ -133,6 +135,14 @@ function CreateTopic() {
           Criar Tópico
         </button>
       </form>
+      <div className="topic-redirect">
+        <p>
+            <Link className="link-topic" to="/">
+              <img src={left_arrow} id="arrow"/>
+              Voltar para a página inicial
+            </Link>
+        </p>
+      </div>
     </div>
   );
 }

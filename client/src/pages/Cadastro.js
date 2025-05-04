@@ -4,6 +4,7 @@ import { authRegister } from "../services/authService";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../styles/Cadastro.css";
+import left_arrow from "../icons/left.png";
 
 function RegisterPage() {
     
@@ -75,7 +76,9 @@ function RegisterPage() {
       </div>
       <div className="login-redirect">
         <p>
-            <Link className="link-login" to="/">Voltar para a Página Inicial</Link>
+            <Link className="link-login" to="/">
+              <img src={left_arrow} id="arrow"/>
+              Voltar para a Página Inicial</Link>
         </p>
       </div>
     </div>
