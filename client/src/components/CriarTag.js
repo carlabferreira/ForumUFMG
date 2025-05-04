@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";  // ✅ Apenas useNavigate, nada de Router
 import Axios from "axios";
-import "./App.css";
 
 function CriarTag() {
   const [tagName, setTagName] = useState("");

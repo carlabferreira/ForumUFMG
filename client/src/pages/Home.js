@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import "./Home.css";
-import homeIcon from "./icons/home.png";
-import plusIcon from "./icons/plus.png";
-import loupeIcon from "./icons/loupe.png";
-import personIcon from "./icons/person.png";
+import "../styles/Home.css";
+import homeIcon from "../icons/home.png";
+import plusIcon from "../icons/plus.png";
+import loupeIcon from "../icons/loupe.png";
+import personIcon from "../icons/person.png";
 
 function Home() {
   const navigate = useNavigate();
