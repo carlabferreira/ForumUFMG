@@ -24,7 +24,7 @@ function Home() {
                 Início </a>
             </li>
             <li>
-              <a href="#" onClick={(e) => { e.preventDefault(); }}>
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/criar-topico"); }}>
                 <img src={plusIcon} class="icon" />  
                 Novo Tópico</a>
             </li>

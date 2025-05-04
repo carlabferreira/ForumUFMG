@@ -7,6 +7,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProfessorDashboard from "./pages/ProfessorDashboard";
 import UserDashboard from "./pages/UserDashboard";
 import CriarTag from "./components/CriarTag";
+import CreateTopic from "./pages/CreateTopic";
 import "./App.css";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/dashboard" element={renderDashboard()} />
         <Route path="/criar-tag" element={<CriarTag />} />
+        <Route path="/criar-topico" element={<CreateTopic />} />
       </Routes>
     </Router>
   );
