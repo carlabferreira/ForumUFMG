@@ -95,3 +95,10 @@
   padding: 0 10px;
   vertical-align: middle;
 }
+
+.mensagem-sucesso {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
