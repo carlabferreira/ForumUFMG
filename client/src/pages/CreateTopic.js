@@ -16,21 +16,18 @@ function CreateTopic() {
   const [tagsSelecionadas, setTagsSelecionadas] = useState([]);
   const [erro, setErro] = useState("");
   const navigate = useNavigate();
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
+
 
   useEffect(() => {
-    // Pega o token do localStorage ou outro lugar e configura no axios
-    const token = localStorage.getItem("accessToken"); // ou se for cookie, pegue aqui
-    if (token) {
-      axios.defaults.headers['Authorization'] = `Bearer ${token}`;
-    }
 
     // Buscar categorias
-    axios.get("/server/categorias")
+    axios.get("http://localhost:3002/server/categorias", { withCredentials: true })
       .then((res) => setCategorias(res.data))
       .catch((err) => console.error("Erro ao carregar categorias:", err));
 
     // Buscar tags
-    axios.get("/server/tags")
+    axios.get("http://localhost:3002/server/tags", { withCredentials: true })
       .then((res) => setTagsDisponiveis(res.data))
       .catch((err) => console.error("Erro ao carregar tags:", err));
   }, []);
@@ -38,40 +35,32 @@ function CreateTopic() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Pega o token armazenado no localStorage
-    const token = localStorage.getItem("accessToken");
-
-    if (!token) {
-        setErro("Você precisa estar logado!");
-        return;
-    }
-
-    // Configura o cabeçalho da requisição com o token de autorização
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        }
-    };
-
     try {
         const response = await axios.post(
-            "http://localhost:3000/server/topicos",
+            "http://localhost:3002/server/topicos",
             {
                 titulo,
                 descricao,
                 categoria_id: categoriaId,
                 imagem,
-                tags: tagsSelecionadas,
-            }, {
-              withCredentials: true,},
-            config // Passa o cabeçalho para a requisição
+                tags: tagsSelecionadas.map(tag => tag.value),
+            }, 
+            {withCredentials: true}
         );
         console.log(response.data);
-        // Redireciona para a página de tópicos ou outro comportamento desejado
-        navigate("/topicos");
+        setMensagemSucesso("Tópico criado com sucesso!");
+        setTimeout(() => {
+          setMensagemSucesso("");
+          navigate("/home");
+        }, 3000);
     } catch (err) {
-        console.error(err);
+      console.error("Erro real:", err.response?.data || err.message);
+
+      if (err.response?.status === 401) {
+        setErro("Você precisa estar logado.");
+      } else {
         setErro("Erro ao criar o tópico.");
+      }
     }
 };
 
@@ -146,6 +135,7 @@ function CreateTopic() {
           Criar Tópico
         </button>
       </form>
+      {mensagemSucesso && <div className="mensagem-sucesso">{mensagemSucesso}</div>}
       <div className="topic-redirect">
         <p>
           <Link className="link-topic" to="/">

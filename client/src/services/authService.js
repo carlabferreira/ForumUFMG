@@ -1,5 +1,7 @@
 import Axios from "axios";
 
+Axios.defaults.withCredentials = true;
+
 export const authLogin = (values) => {
   return Axios.post("http://localhost:3002/server/auth/login", {
     email: values.email,

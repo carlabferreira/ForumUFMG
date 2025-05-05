@@ -12,11 +12,10 @@ function LoginPage({ setUser }) {
   const handleLogin = async (values) => {
     try {
       const data = await authLogin(values);
-      if (data) {
-        localStorage.setItem("user", JSON.stringify(data));
-        setUser(data);
-        navigate("/dashboard");
-      }
+
+      setUser(data);
+      navigate("/dashboard");
+
     } catch (error) {
       alert("Erro ao fazer login.");
       console.error(error);
