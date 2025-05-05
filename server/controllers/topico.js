@@ -72,36 +72,12 @@ export const addTopico = (req, res) => {
                 return res.status(200).json("Tópico criado com sucesso!");
             }
 
-            // Verifica tags e insere relação
-            const tagPromises = tags.map((tag) => {
-                return new Promise((resolve, reject) => {
-                    // 1. Verifica se tag já existe
-                    db.query("SELECT id FROM tags WHERE nome = ?", [tag], (err, tagRows) => {
-                        if (err) return reject(err);
+            const relacoes = tags.map((tagId) => [topico_id, tagId]);
+            const insertRelacoes = "INSERT INTO topico_tags (topico_id, tag_id) VALUES ?";
 
-                        if (tagRows.length > 0) {
-                            // Tag já existe
-                            const tagId = tagRows[0].id;
-                            return resolve(tagId);
-                        } else {
-                            return res.status(404).json("Tag não existente!");
-                        }
-                    });
-                });
-            });
-
-            Promise.all(tagPromises)
-            .then((tagIds) => {
-                const relacoes = tagIds.map((tagId) => [topico_id, tagId]);
-                const q = "INSERT INTO topico_tags (topico_id, tag_id) VALUES ?";
-
-                db.query(q, [relacoes], (err) => {
-                    if (err) return res.status(500).json(err);
-                    return res.status(200).json("Tópico criado com sucesso!");
-                });
-            })
-            .catch((err) => {
-                return res.status(500).json(err);
+            db.query(insertRelacoes, [relacoes], (err2) => {
+                if (err2) return res.status(500).json(err2);
+                return res.status(200).json("Tópico criado com sucesso!");
             });
         });
     });
