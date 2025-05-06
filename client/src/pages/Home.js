@@ -45,7 +45,7 @@ function Home() {
               </a>
             </li>
             <li>
-              <a href="#" onClick={(e) => { e.preventDefault(); }}>
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/busca"); }}>
                 <img src={loupeIcon} className="icon" />
                 Busca
               </a>

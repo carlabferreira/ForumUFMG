@@ -15,7 +15,7 @@ function AdminDashboard({ user, logout }) {
         <h1>Bem-vindo, Técnico {user.nome || user.email}!</h1>
         <button className="button" onClick={handleLogout}>Logout</button>
         <button className="button" onClick={() => navigate("/criar-tag")}>Criar Tag</button>
-
+        <button className="button" onClick={() => navigate("/criar-categoria")}>Criar Categoria</button>
         <div className="register-redirect">
           <p>
             <button className="link-cadastro" onClick={() => navigate("/")}>

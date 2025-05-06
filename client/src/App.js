@@ -7,7 +7,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProfessorDashboard from "./pages/ProfessorDashboard";
 import UserDashboard from "./pages/UserDashboard";
 import CriarTag from "./components/CriarTag";
+import CriarCategoria from "./components/CriarCategoria";
 import CreateTopic from "./pages/CreateTopic";
+import Busca from "./pages/Busca";
 import "./App.css";
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
         <Route path="/dashboard" element={renderDashboard()} />
         <Route path="/criar-tag" element={<CriarTag />} />
         <Route path="/criar-topico" element={<CreateTopic />} />
+        <Route path="/criar-categoria" element={<CriarCategoria />} />
+        <Route path="/busca" element={<Busca />} />
       </Routes>
     </Router>
   );
