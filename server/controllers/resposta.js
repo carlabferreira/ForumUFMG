@@ -36,3 +36,21 @@ export const addResposta = (req, res) => {
 
     });
 };
+
+export const deleteResposta = (req, res) => {
+    const token = req.cookies.accessToken;
+    if (!token) return res.status(401).json("Não autenticado!");
+  
+    jwt.verify(token, "secretkey", (err, userInfo) => {
+      if (err) return res.status(403).json("Token não é válido!");
+  
+      const respostaId = req.params.id;
+      const q = "DELETE FROM respostas WHERE `id` = ? AND `usuario_id` = ?";
+  
+      db.query(q, [respostaId, userInfo.id], (err, data) => {
+        if (err) return res.status(500).json(err);
+        if (data.affectedRows > 0) return res.json("Resposta foi deletada!");
+        return res.status(403).json("Você apenas pode apagar suas respostas!");
+      });
+    });
+  };
