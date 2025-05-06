@@ -81,36 +81,82 @@ nav ul li a:hover {
   vertical-align: middle;
 }
 
-/* Estilização do conteúdo principal */
-main{
+/* Ajuste no conteúdo principal */
+main {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
   grid-column: 1 / 6;
   grid-row: 2 / 5;
-  padding: 20px;
+  padding: 10px; /* Reduz o padding geral */
+  grid-gap: 20px;
   box-sizing: border-box;
 }
 
-/* Estilização das caixas de texto Sobre Nós e Sugestões */
-.sobre-nos, .sugestoes {
-  grid-column: 5/6;
+/* Ajuste no tópico recente */
+.topico-recente {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0; /* Reduz o espaço vertical */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.topico-recente h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.topico-recente h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.topico-recente p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Ajuste na caixa "Sobre Nós" */
+.sobre-nos {
+  grid-column: 2 / 2;
+  grid-row: 2 / 4;
+  font-size: 13px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Ajuste na caixa "Sugestões" */
+.sugestoes {
+  grid-column: 2 / 2;
+  grid-row: 1 / 2;
   font-size: 13px;
   background-color: #f4f4f4;
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 10px;
-  box-sizing: border-box; /* Garante que padding e border sejam incluídos no tamanho total */
-}
-
-.sobre-nos{
-  grid-row: 2/3;
-}
-
-.sugestoes{
-  grid-row: 3/4;
+  margin: 10px 0; /* Reduz o espaço vertical */
+  box-sizing: border-box;
 }
   
+/* Estilo para a seção "Tópico Recente" */
+.topico-recente {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
 /* Rodapé */
 footer {
   grid-row: 5/6;
@@ -156,7 +202,7 @@ footer div{
   }
 }
 
-/* Estilização do cabeçalho pequeno */
+/* Ajuste no cabeçalho */
 .small-header {
   display: flex;
   align-items: center;
@@ -167,24 +213,11 @@ footer div{
   box-sizing: border-box; /* Garante que padding e border sejam incluídos no tamanho total */
   margin-top: 0; /* Remove qualquer margem superior */
   padding-top: 0; /* Remove qualquer padding superior */
+  margin-bottom: 0; /* Remove qualquer margem inferior */
+  padding-bottom: 10px; /* Ajusta o espaçamento interno */
   height: 80px; /* Ajuste a altura conforme necessário */
   top: 0; /* Fixa o cabeçalho no topo da página */
   left: 0; /* Fixa o cabeçalho no lado esquerdo da página */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil para dar profundidade ao cabeçalho */
-}
-
-.small-header #logo {
-  height: 90px; /* Reduza o tamanho do logotipo */
-  width: auto; /* Mantenha a proporção do logotipo */
-  max-width: 100%; /* Garante que o logotipo não ultrapasse a largura do cabeçalho */
-  margin: 0; /* Remove a margem do logotipo */
-  padding: 0; /* Remove o padding do logotipo */
-}
-
-.small-header nav ul {
-  display: flex;
-  gap: 1 px;
-  list-style: none;
   margin: 0;
   padding: 0;
 }

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 import homeIcon from "../icons/home.png";
@@ -7,6 +8,19 @@ import personIcon from "../icons/person.png";
 
 function Home() {
   const navigate = useNavigate();
+  const [topicoRecente, setTopicoRecente] = useState(null);
+
+  useEffect(() => {
+    // Fetch para obter o tópico mais recente
+    fetch("/server/topicos?limit=1")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.length > 0) {
+          setTopicoRecente(data[0]);
+        }
+      })
+      .catch((err) => console.error("Erro ao buscar tópico recente:", err));
+  }, []);
 
   return (
     <section id="container">
@@ -46,7 +60,7 @@ function Home() {
         </nav>
       </header>
       <main>
-        <p>Teste para ver onde o texto aparece</p>
+        {/* <p>Teste para ver onde o texto aparece</p> */}
         <div className="sobre-nos">
           <h2>Sobre nós</h2>
           <p>
@@ -64,10 +78,20 @@ function Home() {
             Caso queira sugerir uma tag ou ideia para aprimoramento do Fórum, por favor entre em contato pelo e-mail <a href="mailto:sugestoes@forum.ufmg.com">sugestoes@forum.ufmg.com</a>
           </p>
         </div>
+        {topicoRecente && (
+          <div className="topico-recente">
+            <h2>Tópico Recente</h2>
+            <h3>{topicoRecente.titulo}</h3>
+            <p>{topicoRecente.descricao}</p>
+            <p>
+              Categoria: {topicoRecente.categoria} | Criado por: {topicoRecente.nome}
+            </p>
+          </div>
+        )}
       </main>
       <footer>
-      <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik</a> 
-      from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik</a> 
+        from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
         <p>&copy; 2025 Fórum UFMG. Todos os direitos reservados.</p>
       </footer>
     </section>
