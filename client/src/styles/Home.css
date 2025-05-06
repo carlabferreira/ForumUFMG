@@ -90,6 +90,7 @@ main {
   grid-row: 2 / 5;
   padding: 10px; /* Reduz o padding geral */
   grid-gap: 20px;
+  margin: 0 20px; /*espaçamento na lateral*/
   box-sizing: border-box;
 }
 
