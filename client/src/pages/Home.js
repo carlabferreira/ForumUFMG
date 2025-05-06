@@ -42,11 +42,13 @@ function Home() {
           id="logo"
           src="/logo/logo_with_speech_bubble_without_background_2.png"
           alt="Fórum UFMG"
+          onClick={() => navigate("/")} // Adiciona navegação ao clicar no logo
+          style={{ cursor: "pointer" }} // Adiciona um cursor de ponteiro para indicar que é clicável
         />
         <nav>
           <ul>
             <li>
-              <a href="#" onClick={(e) => { e.preventDefault(); }}>
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }}>
                 <img src={homeIcon} className="icon" />
                 Início
               </a>
