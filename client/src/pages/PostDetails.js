@@ -18,6 +18,26 @@ function PostDetails({ user }) {
       .catch((err) => console.error("Erro ao buscar o post:", err));
   }, [id]);
 
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`/server/topicos/${id}`, {
+        method: "DELETE",
+        credentials: "include", // Inclui cookies para autenticação
+      });
+
+      if (response.ok) {
+        alert("Tópico deletado com sucesso!");
+        navigate("/"); // Redireciona para a página inicial após a exclusão
+      } else {
+        const errorMessage = await response.text();
+        alert(`Erro ao deletar o tópico: ${errorMessage}`);
+      }
+    } catch (err) {
+      console.error("Erro ao deletar o tópico:", err);
+      alert("Erro ao deletar o tópico.");
+    }
+  };
+
   if (!post) {
     return <p>Carregando...</p>;
   }
@@ -85,6 +105,12 @@ function PostDetails({ user }) {
               ))}
             </ul>
           </div>
+        )}
+        {/* Botão de deletar visível apenas para o criador do post */}
+        {user && user.nome === post.nome && (
+          <button className="delete-button" onClick={handleDelete}>
+            Deletar Tópico
+          </button>
         )}
       </div>
     </section>

@@ -50,3 +50,19 @@
     background-color: #fff; /* Fundo branco */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
   }
+
+  .delete-button {
+    background-color: #ad0c27; /* Vermelho */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.delete-button:hover {
+    background-color: #8b0a20; /* Vermelho mais escuro */
+}
