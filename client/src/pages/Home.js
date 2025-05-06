@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Post from "../pages/Post";
+
 import "../styles/Home.css";
 import homeIcon from "../icons/home.png";
 import plusIcon from "../icons/plus.png";
@@ -9,6 +11,17 @@ import personIcon from "../icons/person.png";
 function Home() {
   const navigate = useNavigate();
   const [topicoRecente, setTopicoRecente] = useState(null);
+  const [topicos, setTopicos] = useState([]);
+
+  useEffect(() => {
+    // Fetch para obter todos os tópicos
+    fetch("/server/topicos")
+    .then((res) => res.json())
+    .then((data) => {
+      setTopicos(data); // Armazena todos os tópicos no estado
+    })
+    .catch((err) => console.error("Erro ao buscar tópicos:", err));
+  }, []);
 
   useEffect(() => {
     // Fetch para obter o tópico mais recente
@@ -78,16 +91,36 @@ function Home() {
             Caso queira sugerir uma tag ou ideia para aprimoramento do Fórum, por favor entre em contato pelo e-mail <a href="mailto:sugestoes@forum.ufmg.com">sugestoes@forum.ufmg.com</a>
           </p>
         </div>
-        {topicoRecente && (
-          <div className="topico-recente">
-            <h2>Tópico Recente</h2>
-            <h3>{topicoRecente.titulo}</h3>
-            <p>{topicoRecente.descricao}</p>
-            <p>
-              Categoria: {topicoRecente.categoria} | Criado por: {topicoRecente.nome}
-            </p>
-          </div>
-        )}
+        <div className="recente">
+          <h2>Tópico mais recente</h2>
+          {topicoRecente && (
+            <div className="topico-recente">
+              <h3>{topicoRecente.titulo}</h3>
+              <p>{topicoRecente.descricao}</p>
+              <p>
+                Categoria: {topicoRecente.categoria} | Criado por: {topicoRecente.nome}
+              </p>
+            </div>
+          )}
+        </div>
+        <div className="todos-topicos">
+          <h2>Todos os tópicos</h2>
+          {topicos.length > 0 ? (
+            topicos.map((topico, index) => (
+              <Post
+                key={index}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                categoria={topico.categoria}
+                nome={topico.nome}
+                tags={topico.tags}
+              />
+            ))
+          ) : (
+            <p>Nenhum tópico encontrado.</p>
+          )}
+        </div>
+
       </main>
       <footer>
         <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik</a> 
