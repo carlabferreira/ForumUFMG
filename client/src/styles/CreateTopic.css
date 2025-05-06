@@ -112,3 +112,19 @@ textarea.form-field {
   max-width: 100%; /* Largura máxima */
   box-sizing: border-box;
 }
+
+.react-select__control {
+  font-size: 14px; /* Diminui o tamanho da fonte */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.react-select__placeholder {
+  font-size: 14px; /* Diminui o tamanho da fonte do placeholder */
+  text-align: left; /* Alinha o placeholder à esquerda */
+  color: #888; /* Ajusta a cor do placeholder (opcional) */
+}
+
+.react-select__single-value {
+  font-size: 14px; /* Diminui o tamanho da fonte do valor selecionado */
+  text-align: left; /* Alinha o valor selecionado à esquerda */
+}
