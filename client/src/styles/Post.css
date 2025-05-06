@@ -29,3 +29,24 @@
     border-radius: 5px;
     font-size: 0.6em;
 }
+
+.link-ver-mais {
+    color: #ad0c27; /* Vermelho */
+    font-size: small; /* Tamanho pequeno */
+    text-decoration: none; /* Remove o sublinhado */
+    font-weight: bold; /* Deixa o texto em negrito */
+  }
+  
+  .link-ver-mais:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+  }
+
+  .post-details {
+    margin-left: 20px; /* Adiciona uma margem lateral esquerda */
+    margin-right: 20px; /* Opcional: Adiciona uma margem lateral direita */
+    padding: 15px; /* Adiciona um espaçamento interno */
+    border: 1px solid #ddd; /* Adiciona uma borda para destacar o post */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #fff; /* Fundo branco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  }

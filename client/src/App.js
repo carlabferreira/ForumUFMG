@@ -10,6 +10,7 @@ import CriarTag from "./components/CriarTag";
 import CriarCategoria from "./components/CriarCategoria";
 import CreateTopic from "./pages/CreateTopic";
 import Busca from "./pages/Busca";
+import PostDetails from "./pages/PostDetails";
 import "./App.css";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="/criar-topico" element={<CreateTopic />} />
         <Route path="/criar-categoria" element={<CriarCategoria />} />
         <Route path="/busca" element={<Busca />} />
+        <Route path="/post/:id" element={<PostDetails />} />
       </Routes>
     </Router>
   );

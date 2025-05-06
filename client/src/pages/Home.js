@@ -111,6 +111,7 @@ function Home() {
             topicos.map((topico, index) => (
               <Post
                 key={index}
+                id={topico.id}
                 titulo={topico.titulo}
                 descricao={topico.descricao}
                 categoria={topico.categoria}

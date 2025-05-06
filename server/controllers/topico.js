@@ -101,3 +101,32 @@ export const deleteTopico = (req, res) => {
 
     });
 };
+
+export const getTopicoById = (req, res) => {
+    const { id } = req.params;
+  
+    const q = `SELECT t.*, u.nome AS nome, c.nome AS categoria
+               FROM topicos AS t
+               JOIN usuarios AS u ON t.usuario_id = u.id
+               JOIN categorias AS c ON t.categoria_id = c.id
+               WHERE t.id = ?`;
+  
+    db.query(q, [id], (err, data) => {
+      if (err) return res.status(500).json(err);
+      if (data.length === 0) return res.status(404).json("Post não encontrado");
+  
+      const post = data[0];
+  
+      // Buscar as tags do post
+      const qTags = `SELECT t.nome FROM topico_tags tt
+                     JOIN tags t ON tt.tag_id = t.id
+                     WHERE tt.topico_id = ?`;
+  
+      db.query(qTags, [id], (err, tags) => {
+        if (err) return res.status(500).json(err);
+  
+        post.tags = tags.map((tag) => tag.nome);
+        return res.json(post);
+      });
+    });
+};
