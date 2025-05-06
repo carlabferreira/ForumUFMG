@@ -63,7 +63,7 @@
 11. Adicionar tópico:
 
   <p align="center">
-    <img src="https://github.com/user-attachments/assets/4338a11a-de27-48b7-a3e4-640836efb5d2" width=80%>
+    <img src="https://github.com/user-attachments/assets/f00ac4e3-9915-4344-9aa7-7880b0933fb2" width=80%>
   </p>
   <p align="center">Obs: para criar um tópico, o usuário deve estar logado e as tags inseridas já devem estar no banco de dados</p>
 
