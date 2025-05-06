@@ -1,5 +1,6 @@
 .create-topic-container {
-  width: 350px;
+  width: auto; /* Permite que a largura seja ajustada automaticamente */
+  max-width: 90%; /* Define um limite máximo para a largura */
   background-color: #ebebeb;
   padding: 25px 20px;
   border-radius: 10px;
@@ -101,4 +102,13 @@
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
+}
+
+textarea.form-field {
+  resize: both; /* Permite redimensionar horizontalmente e verticalmente */
+  min-height: 100px; /* Altura mínima */
+  max-height: 300px; /* Altura máxima */
+  min-width: 200px; /* Largura mínima */
+  max-width: 100%; /* Largura máxima */
+  box-sizing: border-box;
 }
