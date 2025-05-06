@@ -7,6 +7,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     font-size: 18px;
+    overflow-x: hidden; /* Garante que o body não tenha scroll horizontal */
   }
   
 /* Container principal */
@@ -18,14 +19,20 @@ body {
   align-items: center;
   justify-content: space-between;
   min-height: 100vh;
+  overflow-x: hidden; /* Impede o scroll horizontal */
+  box-sizing: border-box;
+  top: 0; /* Remove o espaço acima do container */
+  left: 0; /* Remove o espaço à esquerda do container */
+  width: 100%; /* Garante que o container ocupe toda a largura da tela *
   /*padding: 20px;*/
 }
-  
+
 header {
   grid-row: 1/2;
   grid-column: 1/6;
   text-align: center;
   margin-bottom: 20px;
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos no tamanho total */
 }
   
 #logo {
@@ -93,6 +100,7 @@ main{
   border: 1px solid black;
   border-radius: 5px;
   margin: 10px;
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos no tamanho total */
 }
 
 .sobre-nos{
@@ -114,6 +122,8 @@ footer {
   color: white;
   width: 100%;
   font-size: 12px;
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos no tamanho total */
+  position: relative; /* Para garantir que o rodapé fique na parte inferior */
 }
 
 footer p {
@@ -125,7 +135,7 @@ footer div{
   padding-bottom: 10px;
 }
   
-  /* Ajustes para telas menores */
+/* Ajustes para telas menores */
 @media (max-width: 768px) {
   #logo {
     max-width: 250px;
@@ -145,4 +155,49 @@ footer div{
     font-size: 16px;
   }
 }
-  
+
+/* Estilização do cabeçalho pequeno */
+.small-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f9fa; /* Ajuste conforme necessário */
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos no tamanho total */
+  margin-top: 0; /* Remove qualquer margem superior */
+  padding-top: 0; /* Remove qualquer padding superior */
+  height: 80px; /* Ajuste a altura conforme necessário */
+  top: 0; /* Fixa o cabeçalho no topo da página */
+  left: 0; /* Fixa o cabeçalho no lado esquerdo da página */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil para dar profundidade ao cabeçalho */
+}
+
+.small-header #logo {
+  height: 90px; /* Reduza o tamanho do logotipo */
+  width: auto; /* Mantenha a proporção do logotipo */
+  max-width: 100%; /* Garante que o logotipo não ultrapasse a largura do cabeçalho */
+  margin: 0; /* Remove a margem do logotipo */
+  padding: 0; /* Remove o padding do logotipo */
+}
+
+.small-header nav ul {
+  display: flex;
+  gap: 1 px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.small-header nav ul li a {
+  text-decoration: none;
+  font-size: 14px; /* Reduza o tamanho da fonte */
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.small-header nav ul li a .icon {
+  height: 20px; /* Reduza o tamanho dos ícones */
+  margin-right: 5px;
+}

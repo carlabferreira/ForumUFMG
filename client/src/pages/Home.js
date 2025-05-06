@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <section id="container">
-      <header>
+      <header className="small-header">
         <img
           id="logo"
           src="/logo/logo_with_speech_bubble_without_background_2.png"
@@ -20,22 +20,25 @@ function Home() {
           <ul>
             <li>
               <a href="#" onClick={(e) => { e.preventDefault(); }}>
-                <img src={homeIcon} class="icon" />
-                Início </a>
+                <img src={homeIcon} className="icon" />
+                Início
+              </a>
             </li>
             <li>
               <a href="#" onClick={(e) => { e.preventDefault(); navigate("/criar-topico"); }}>
-                <img src={plusIcon} class="icon" />  
-                Novo Tópico</a>
+                <img src={plusIcon} className="icon" />
+                Novo Tópico
+              </a>
             </li>
             <li>
               <a href="#" onClick={(e) => { e.preventDefault(); }}>
-                <img src={loupeIcon} class="icon" />
-                Busca</a>
+                <img src={loupeIcon} className="icon" />
+                Busca
+              </a>
             </li>
             <li>
               <a href="#" onClick={(e) => { e.preventDefault(); navigate("/login"); }}>
-                <img src={personIcon} class="icon" />
+                <img src={personIcon} className="icon" />
                 Entrar
               </a>
             </li>
