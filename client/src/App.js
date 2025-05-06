@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
-import Home from "./pages/Home"
+import Home from "./pages/Home";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProfessorDashboard from "./pages/ProfessorDashboard";
 import UserDashboard from "./pages/UserDashboard";
@@ -38,16 +38,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home user={user} />} />
+        <Route path="/home" element={<Home user={user} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/dashboard" element={renderDashboard()} />
         <Route path="/criar-tag" element={<CriarTag />} />
-        <Route path="/criar-topico" element={<CreateTopic />} />
+        <Route path="/criar-topico" element={<CreateTopic user={user} />} />
         <Route path="/criar-categoria" element={<CriarCategoria />} />
         <Route path="/busca" element={<Busca />} />
-        <Route path="/post/:id" element={<PostDetails />} />
+        <Route path="/post/:id" element={<PostDetails user={user} />} />
       </Routes>
     </Router>
   );

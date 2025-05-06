@@ -6,13 +6,12 @@ import plusIcon from "../icons/plus.png";
 import loupeIcon from "../icons/loupe.png";
 import personIcon from "../icons/person.png";
 
-function PostDetails() {
-  const { id } = useParams(); // Obtém o ID do post da URL
+function PostDetails({ user }) {
+  const { id } = useParams();
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch para obter os detalhes do post pelo ID
     fetch(`/server/topicos/${id}`)
       .then((res) => res.json())
       .then((data) => setPost(data))
@@ -36,52 +35,35 @@ function PostDetails() {
         <nav>
           <ul>
             <li>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate("/");
-                }}
-              >
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }}>
                 <img src={homeIcon} className="icon" />
                 Início
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate("/criar-topico");
-                }}
-              >
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/criar-topico"); }}>
                 <img src={plusIcon} className="icon" />
                 Novo Tópico
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate("/busca");
-                }}
-              >
+              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/busca"); }}>
                 <img src={loupeIcon} className="icon" />
                 Busca
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate("/login");
-                }}
-              >
-                <img src={personIcon} className="icon" />
-                Entrar
-              </a>
+              {user ? (
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/dashboard"); }}>
+                  <img src={personIcon} className="icon" />
+                  {user.nome || user.email}
+                </a>
+              ) : (
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/login"); }}>
+                  <img src={personIcon} className="icon" />
+                  Entrar
+                </a>
+              )}
             </li>
           </ul>
         </nav>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Post from "../pages/Post";
+import axios from "axios";
 
 import "../styles/Home.css";
 import homeIcon from "../icons/home.png";
@@ -8,7 +9,7 @@ import plusIcon from "../icons/plus.png";
 import loupeIcon from "../icons/loupe.png";
 import personIcon from "../icons/person.png";
 
-function Home() {
+function Home({ user }) {
   const navigate = useNavigate();
   const [topicoRecente, setTopicoRecente] = useState(null);
   const [topicos, setTopicos] = useState([]);
@@ -16,11 +17,11 @@ function Home() {
   useEffect(() => {
     // Fetch para obter todos os tópicos
     fetch("/server/topicos")
-    .then((res) => res.json())
-    .then((data) => {
-      setTopicos(data); // Armazena todos os tópicos no estado
-    })
-    .catch((err) => console.error("Erro ao buscar tópicos:", err));
+      .then((res) => res.json())
+      .then((data) => {
+        setTopicos(data); // Armazena todos os tópicos no estado
+      })
+      .catch((err) => console.error("Erro ao buscar tópicos:", err));
   }, []);
 
   useEffect(() => {
@@ -35,6 +36,18 @@ function Home() {
       .catch((err) => console.error("Erro ao buscar tópico recente:", err));
   }, []);
 
+  const handleLogin = async (values) => {
+    try {
+      const response = await axios.post("/server/login", values, { withCredentials: true });
+      const userData = response.data;
+      localStorage.setItem("user", JSON.stringify(userData));
+      setUser(userData); // Atualiza o estado global do usuário
+      navigate("/"); // Redireciona para a página inicial
+    } catch (err) {
+      console.error("Erro ao fazer login:", err);
+    }
+  };
+
   return (
     <section id="container">
       <header className="small-header">
@@ -42,8 +55,8 @@ function Home() {
           id="logo"
           src="/logo/logo_with_speech_bubble_without_background_2.png"
           alt="Fórum UFMG"
-          onClick={() => navigate("/")} // Adiciona navegação ao clicar no logo
-          style={{ cursor: "pointer" }} // Adiciona um cursor de ponteiro para indicar que é clicável
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
         />
         <nav>
           <ul>
@@ -66,16 +79,22 @@ function Home() {
               </a>
             </li>
             <li>
-              <a href="#" onClick={(e) => { e.preventDefault(); navigate("/login"); }}>
-                <img src={personIcon} className="icon" />
-                Entrar
-              </a>
+              {user ? (
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/dashboard"); }}>
+                  <img src={personIcon} className="icon" />
+                  {user.nome || user.email}
+                </a>
+              ) : (
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/login"); }}>
+                  <img src={personIcon} className="icon" />
+                  Entrar
+                </a>
+              )}
             </li>
           </ul>
         </nav>
       </header>
       <main>
-        {/* <p>Teste para ver onde o texto aparece</p> */}
         <div className="sobre-nos">
           <h2>Sobre nós</h2>
           <p>
@@ -123,7 +142,6 @@ function Home() {
             <p>Nenhum tópico encontrado.</p>
           )}
         </div>
-
       </main>
       <footer>
         <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik</a> 
