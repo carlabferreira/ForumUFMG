@@ -1,4 +1,5 @@
-# Membros da equipe:
+# Fórum UFMG
+### Membros da equipe:
 - Carla Beatriz Ferreira - PO e Full Stack
 - Gabriele Pinheiro Sá - Backend e eng. de dados
 - Manuela Monteiro Fernandes de Oliveira - Frontend
