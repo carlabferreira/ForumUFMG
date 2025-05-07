@@ -1,0 +1,204 @@
+/*** GERAL ***/
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-size: 18px;
+    overflow-x: hidden; /* Garante que o body não tenha scroll horizontal */
+}
+
+/* Container principal */
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/*** CABEÇALHO ***/
+.small-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.small-header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.small-header nav ul li {
+    display: inline-block;
+}
+
+.small-header nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.small-header nav ul li a:hover {
+    color: #555;
+}
+
+.small-header nav ul li a .icon {
+    height: 20px;
+    margin-right: 5px;
+}
+
+/*** RESULTADOS DA BUSCA ***/
+.todos-topicos-busca {
+    margin: 20px auto; /* Centraliza o contêiner horizontalmente */
+    max-width: 75%; /* Define a largura máxima como 3/4 da página */
+    padding: 20px; /* Adiciona espaçamento interno */
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.busca-container .todos-topicos-busca {
+  margin: 20px auto; /* Centraliza o contêiner horizontalmente */
+  max-width: 75%; /* Define a largura máxima como 3/4 da página */
+  padding: 20px; /* Adiciona espaçamento interno */
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todos-topicos h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.error-message {
+    color: #ad0c27;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/*** POST INDIVIDUAL ***/
+.post {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px auto;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.post p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Estilo para o parágrafo de categoria */
+.categoria {
+    font-style: italic;
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para as tags */
+.tags ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tags .tag {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.tags h4 {
+    margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* Estilo para o link "Ver mais" */
+.link-ver-mais {
+    color: #ad0c27;
+    font-size: small;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-ver-mais:hover {
+    text-decoration: underline;
+}
+
+/*** RESPONSIVIDADE ***/
+@media (max-width: 768px) {
+    .todos-topicos {
+        max-width: 90%; /* Ajusta a largura para telas menores */
+        padding: 15px;
+    }
+
+    .small-header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .small-header nav ul li a {
+        font-size: 14px;
+    }
+}
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer div {
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+footer a {
+    color: #f4f4f4;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
