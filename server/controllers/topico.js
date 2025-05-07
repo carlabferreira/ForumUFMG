@@ -130,3 +130,22 @@ export const getTopicoById = (req, res) => {
       });
     });
 };
+
+export const updateTopico = (req, res) => {
+    const token = req.cookies.accessToken;
+    if(!token) return res.status(401).json("Não logado!");
+
+    jwt.verify(token, "secretkey", (err, userInfo)=>{
+        if(err) return res.status(403).json("Token não é válido!");
+    
+        const q = "UPDATE topicos SET `titulo` = ?, `descricao` = ?, `imagem` = ? WHERE `id` = ? AND `usuario_id` = ?";
+
+        const valores = [req.body.titulo, req.body.descricao, req.body.imagem, req.params.id, userInfo.id];
+
+        db.query(q, valores, (err, data) => {
+            if (err) return res.status(500).json(err);
+            if (data.affectedRows > 0) return res.json("Tópico atualizado!");
+            return res.status(403).json("Você só pode atualizar tópico criado por você!");
+        })
+    });
+};
