@@ -80,6 +80,7 @@
     color: #fff;
     /*margin-right: 650px;*/
     font-weight: bold; /* Deixa o texto em negrito */
+    text-decoration: none;
 }
 
 .responder-btn:hover {

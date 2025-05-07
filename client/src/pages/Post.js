@@ -32,7 +32,9 @@ function Post({ id, titulo, descricao, categoria, criado_em, nome, tags }) {
         <Link to={`/post/${id}`} className="link-ver-mais">
           Ver mais
         </Link>
-        <button className="responder-btn" onClick={() => window.location.href = `/post/${id}#responder`}> Responder </button>
+        <Link to={`/post/${id}#responder`} className="responder-btn">
+            Responder
+        </Link>
       </div>
     </div>
   );

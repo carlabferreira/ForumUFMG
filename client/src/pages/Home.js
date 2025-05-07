@@ -143,7 +143,9 @@ function Home({ user }) {
                 <Link to={`/post/${topicoRecente.id}`} className="link-ver-mais">
                   Ver mais
                 </Link>
-                <button className="responder-btn" onClick={() => navigate(`/post/${topicoRecente.id}#responder`)}> Responder</button>
+                <Link to={`/post/${topicoRecente.id}#responder`} className="responder-btn">
+                  Responder
+                </Link>
               </div>
             </div>
           ) : (
