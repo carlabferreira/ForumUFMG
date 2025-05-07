@@ -55,7 +55,7 @@ function PostDetails({ user }) {
   // Função para enviar uma nova resposta
   const handleRespostaSubmit = async (e) => {
     e.preventDefault();
-
+    /*** DESCOMENTE ESSA SEÇÃO CASO PARE DE DAR O PROBLEMA DE DESLOGAR SOZINHO ***/
     if (!user) {
       alert("Você precisa estar logado para responder.");
       navigate("/login"); // Redireciona para a página de login
