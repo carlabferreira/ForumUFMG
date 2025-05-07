@@ -86,22 +86,33 @@
     background-color: #8b0a20; /* Vermelho mais escuro */
 }
 
+.info-post{
+    display: flex; /* Ativa o flexbox */
+    justify-content: space-between; /* Espaça os elementos */
+    align-items: center; /* Alinha verticalmente */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
 
 /* Botão de deletar */
-.delete-button {
+.info-post .delete-button {
     background-color: #ad0c27; /* Vermelho */
+    box-sizing: border-box;
     color: #fff;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 12px;
     margin-top: 15px;
 }
 
-.delete-button:hover {
+.info-post .delete-button:hover {
     background-color: #8b0a20; /* Vermelho mais escuro */
+}
+
+.date {
+    font-size: 12px;
+    color: #555;
 }
 
 /*** ESTILO DO POST EM SUA PÁGINA ÚNICA ***/

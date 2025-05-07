@@ -6,7 +6,7 @@ import Select from 'react-select';
 import left_arrow from "../icons/left.png";
 import "../styles/CreateTopic.css";
 
-function CreateTopic() {
+function CreateTopic({ user }) {
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [categoriaId, setCategoriaId] = useState("");
@@ -18,9 +18,15 @@ function CreateTopic() {
   const navigate = useNavigate();
   const [mensagemSucesso, setMensagemSucesso] = useState("");
 
+  // Redireciona para login se o usuário não estiver autenticado
+  useEffect(() => {
+    if (!user) {
+      alert("Você precisa estar logado para criar um tópico.");
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
-
     // Buscar categorias
     axios.get("http://localhost:3002/server/categorias", { withCredentials: true })
       .then((res) => setCategorias(res.data))
@@ -62,7 +68,7 @@ function CreateTopic() {
         setErro("Erro ao criar o tópico.");
       }
     }
-};
+  };
 
   return (
     <div className="create-topic-container">

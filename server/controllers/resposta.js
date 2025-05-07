@@ -31,9 +31,21 @@ export const addResposta = (req, res) => {
 
         db.query(q, [valores], (err, data)=>{
             if (err) return res.status(500).json(err);
-            return res.status(200).json("Resposta enviada com sucesso!");
+            /*return res.status(200).json("Resposta enviada com sucesso!");*/
+                        // Após a inserção, busque os dados completos da resposta
+            const respostaId = data.insertId; // ID da resposta recém-criada
+            const qSelect = `
+                SELECT r.id, r.conteudo, r.criada_em, u.nome 
+                FROM respostas AS r 
+                JOIN usuarios AS u ON r.usuario_id = u.id 
+                WHERE r.id = ?
+            `;
+            
+            db.query(qSelect, [respostaId], (err, respostaData) => {
+                if (err) return res.status(500).json(err);
+                return res.status(200).json(respostaData[0]); // Retorna os dados da resposta
+            });    
         });
-
     });
 };
 

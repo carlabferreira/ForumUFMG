@@ -5,6 +5,8 @@ import homeIcon from "../icons/home.png";
 import plusIcon from "../icons/plus.png";
 import loupeIcon from "../icons/loupe.png";
 import personIcon from "../icons/person.png";
+import moment from "moment";
+import "moment/locale/pt-br";
 
 function PostDetails({ user }) {
   const { id } = useParams();
@@ -12,6 +14,8 @@ function PostDetails({ user }) {
   const navigate = useNavigate();
   const [respostas, setRespostas] = useState([]);
   const [novaResposta, setNovaResposta] = useState("");
+
+  moment.locale("pt-br");
 
   useEffect(() => {
     // Buscar o post
@@ -52,6 +56,12 @@ function PostDetails({ user }) {
   const handleRespostaSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      alert("Você precisa estar logado para responder.");
+      navigate("/login"); // Redireciona para a página de login
+      return;
+    }
+
     try {
       const response = await fetch("/server/respostas", {
         method: "POST",
@@ -67,7 +77,9 @@ function PostDetails({ user }) {
 
       if (response.ok) {
         const novaRespostaData = await response.json();
-        setRespostas([novaRespostaData, ...respostas]); // Atualiza a lista de respostas
+        /*setRespostas([novaRespostaData, ...respostas]); // Atualiza a lista de respostas*/
+        // Atualiza a lista de respostas com a nova resposta
+        setRespostas((prevRespostas) => [novaRespostaData, ...prevRespostas]);
         setNovaResposta(""); // Limpa o campo de texto
       } else {
         const errorMessage = await response.text();
@@ -149,12 +161,15 @@ function PostDetails({ user }) {
             </ul>
           </div>
         )}
-        {/* Botão de deletar visível apenas para o criador do post */}
-        {user && user.nome === post.nome && (
-          <button className="delete-button" onClick={handleDelete}>
-            Deletar Tópico
-          </button>
-        )}
+        <div className="info-post">
+          <span className="date">{moment(post.criado_em).fromNow()}</span>
+          {/* Botão de deletar visível apenas para o criador do post */}
+          {user && user.nome === post.nome && (
+            <button className="delete-button" onClick={handleDelete}>
+              Deletar Tópico
+            </button>
+          )}
+        </div>
         {/* Formulário para responder */}
         <form onSubmit={handleRespostaSubmit} className="resposta-form">
           <h4 className="titulo-resposta">Responder:</h4>
@@ -175,13 +190,14 @@ function PostDetails({ user }) {
               const dataFormatada = !isNaN(dataCriacao) // Verifica se a data é válida
               ? dataCriacao.toLocaleString() // Formata a data para o formato local
               : "Data inválida"; // Mensagem de fallback para datas inválidas
+              
               return (
               <div key={resposta.id} className="resposta">
                 {/*<p>
                   Respondido por: {resposta.nome} em {dataFormatada}
                 </p>*/}
                   <span className="user-info-resposta">Respondido por: {resposta.nome}</span>
-                <p className="reposta-conteudo">{resposta.conteudo}</p>
+                  <p className="reposta-conteudo">{resposta.conteudo}</p>
               </div>
               );
             })

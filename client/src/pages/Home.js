@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Post from "../pages/Post";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import moment from "moment";
+import "moment/locale/pt-br";
 
 import "../styles/Home.css";
 import homeIcon from "../icons/home.png";
@@ -14,6 +16,8 @@ function Home({ user }) {
   const navigate = useNavigate();
   const [topicoRecente, setTopicoRecente] = useState(null);
   const [topicos, setTopicos] = useState([]);
+
+  moment.locale("pt-br");
 
   useEffect(() => {
     // Fetch para obter todos os tópicos
@@ -36,6 +40,12 @@ function Home({ user }) {
       })
       .catch((err) => console.error("Erro ao buscar tópico recente:", err));
   }, []);
+
+  const [visiveis, setVisiveis] = useState(5); // Mostra inicialmente 5
+
+  const carregarMais = () => {
+    setVisiveis((prev) => prev + 5); // Aumenta o número exibido em 5
+  };
 
   return (
     <section id="container">
@@ -127,6 +137,8 @@ function Home({ user }) {
                   </ul>
                 </div>
               )}
+              <span Cr className="date">Criado {moment(topicoRecente.criado_em).fromNow()}</span>
+              <br></br>
               <div className="links-e-botoes"> 
                 <Link to={`/post/${topicoRecente.id}`} className="link-ver-mais">
                   Ver mais
@@ -142,7 +154,7 @@ function Home({ user }) {
         <div className="todos-topicos">
           <h2>Todos os tópicos</h2>
           {topicos.length > 0 ? (
-            topicos.map((topico, index) => (
+            topicos.slice(0, visiveis).map((topico, index) => (
               <Post
                 key={index}
                 id={topico.id}
@@ -151,10 +163,14 @@ function Home({ user }) {
                 categoria={topico.categoria}
                 nome={topico.nome}
                 tags={topico.tags}
+                criado_em={topico.criado_em}
               />
             ))
           ) : (
             <p>Nenhum tópico encontrado.</p>
+          )}
+          {visiveis < topicos.length && (
+            <button className="button" onClick={carregarMais}>Carregar mais tópicos</button>
           )}
         </div>
       </main>
