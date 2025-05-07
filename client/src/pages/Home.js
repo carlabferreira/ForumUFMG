@@ -41,6 +41,12 @@ function Home({ user }) {
       .catch((err) => console.error("Erro ao buscar tópico recente:", err));
   }, []);
 
+  const [visiveis, setVisiveis] = useState(5); // Mostra inicialmente 5
+
+  const carregarMais = () => {
+    setVisiveis((prev) => prev + 5); // Aumenta o número exibido em 5
+  };
+
   return (
     <section id="container">
       {/*Header com logo e navegação*/}
@@ -143,7 +149,7 @@ function Home({ user }) {
         <div className="todos-topicos">
           <h2>Todos os tópicos</h2>
           {topicos.length > 0 ? (
-            topicos.map((topico, index) => (
+            topicos.slice(0, visiveis).map((topico, index) => (
               <Post
                 key={index}
                 id={topico.id}
@@ -157,6 +163,9 @@ function Home({ user }) {
             ))
           ) : (
             <p>Nenhum tópico encontrado.</p>
+          )}
+          {visiveis < topicos.length && (
+            <button className="button" onClick={carregarMais}>Carregar mais tópicos</button>
           )}
         </div>
       </main>
