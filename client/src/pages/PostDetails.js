@@ -5,11 +5,15 @@ import homeIcon from "../icons/home.png";
 import plusIcon from "../icons/plus.png";
 import loupeIcon from "../icons/loupe.png";
 import personIcon from "../icons/person.png";
+import moment from "moment";
+import "moment/locale/pt-br";
 
 function PostDetails({ user }) {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
+
+  moment.locale("pt-br");
 
   useEffect(() => {
     fetch(`/server/topicos/${id}`)
@@ -106,6 +110,7 @@ function PostDetails({ user }) {
             </ul>
           </div>
         )}
+        <span className="date">{moment(post.criado_em).fromNow()}</span>
         {/* Botão de deletar visível apenas para o criador do post */}
         {user && user.nome === post.nome && (
           <button className="delete-button" onClick={handleDelete}>

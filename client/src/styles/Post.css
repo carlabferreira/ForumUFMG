@@ -85,3 +85,7 @@
 .delete-button:hover {
     background-color: #8b0a20; /* Vermelho mais escuro */
 }
+
+.date {
+    font-size: 12px;
+}

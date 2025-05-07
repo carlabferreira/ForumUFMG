@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Post from "../pages/Post";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import moment from "moment";
+import "moment/locale/pt-br";
 
 import "../styles/Home.css";
 import homeIcon from "../icons/home.png";
@@ -14,6 +16,8 @@ function Home({ user }) {
   const navigate = useNavigate();
   const [topicoRecente, setTopicoRecente] = useState(null);
   const [topicos, setTopicos] = useState([]);
+
+  moment.locale("pt-br");
 
   useEffect(() => {
     // Fetch para obter todos os tópicos
@@ -127,6 +131,8 @@ function Home({ user }) {
                   </ul>
                 </div>
               )}
+              <span Cr className="date">Criado {moment(topicoRecente.criado_em).fromNow()}</span>
+              <br></br>
               <Link to={`/post/${topicoRecente.id}`} className="link-ver-mais">
                 Ver mais
               </Link>
@@ -146,6 +152,7 @@ function Home({ user }) {
                 categoria={topico.categoria}
                 nome={topico.nome}
                 tags={topico.tags}
+                criado_em={topico.criado_em}
               />
             ))
           ) : (

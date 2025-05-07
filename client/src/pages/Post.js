@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Importação do Link
 import "../styles/Post.css";
+import moment from "moment";
+import "moment/locale/pt-br";
 
-function Post({ id, titulo, descricao, categoria, nome, tags }) {
+function Post({ id, titulo, descricao, categoria, criado_em, nome, tags }) {
+
+  moment.locale("pt-br");
+  const timeAgo = criado_em ? moment(criado_em).local().fromNow() : "Data inválida";
+
   return (
     <div className="post">
       <h3>{titulo}</h3>
@@ -20,6 +26,8 @@ function Post({ id, titulo, descricao, categoria, nome, tags }) {
           </ul>
         </div>
       )}
+      <span className="date">Criado {timeAgo}</span>
+      <br></br>
       <Link to={`/post/${id}`} className="link-ver-mais">
         Ver mais
       </Link>
