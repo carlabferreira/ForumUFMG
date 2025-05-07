@@ -149,3 +149,91 @@ export const updateTopico = (req, res) => {
         })
     });
 };
+
+export const getTopicoBySearch = (req, res) => {
+    //console.log("Query Parameters:", req.query);
+    const { tags, categoriaId, titulo } = req.query; // Extract query parameters
+
+    // Ensure at least one parameter is provided
+    if (!tags && !categoriaId && !titulo) {
+        return res.status(400).json("Pelo menos um parâmetro de busca deve ser fornecido.");
+    }
+
+    // Base query
+    let q = `
+        SELECT DISTINCT t.*, u.nome AS usuario_nome, c.nome AS categoria_nome
+        FROM topicos AS t
+        JOIN usuarios AS u ON t.usuario_id = u.id
+        JOIN categorias AS c ON t.categoria_id = c.id
+        LEFT JOIN topico_tags tt ON t.id = tt.topico_id
+        LEFT JOIN tags tg ON tt.tag_id = tg.id
+        WHERE 1=1
+    `;
+
+    // Query conditions
+    const conditions = [];
+    const values = [];
+
+    if (tags) {
+        const tagArray = Array.isArray(tags) ? tags : [tags]; // Ensure tags is an array
+        conditions.push(`tg.id IN (${tagArray.map(() => "?").join(",")})`);
+        values.push(...tagArray);
+    }
+
+    if (categoriaId) {
+        conditions.push("c.id = ?");
+        values.push(categoriaId);
+    }
+
+    if (titulo) {
+        conditions.push("t.titulo LIKE ?");
+        values.push(`%${titulo}%`);
+    }
+
+    // Append conditions to the query
+    if (conditions.length > 0) {
+        q += " AND " + conditions.join(" AND ");
+    }
+
+    // Order by creation date
+    q += " ORDER BY t.criado_em DESC";
+    //console.log(q);
+
+    // Execute the query
+    db.query(q, values, (err, data) => {
+        if (err) return res.status(500).json(err);
+
+        // If no topics are found
+        if (data.length === 0) return res.status(404).json("Nenhum tópico encontrado.");
+
+        // Fetch tags for the found topics
+        const topicoIds = data.map((topico) => topico.id);
+        //console.log("Topic IDs:", topicoIds);
+
+        const qTags = `
+            SELECT tt.topico_id, tg.nome
+            FROM topico_tags tt
+            JOIN tags tg ON tt.tag_id = tg.id
+            WHERE tt.topico_id IN (?)
+        `;
+
+        db.query(qTags, [topicoIds], (err, tags) => {
+            if (err) return res.status(500).json(err);
+
+            // Group tags by topic ID
+            const tagsPorTopico = {};
+            tags.forEach((tag) => {
+                if (!tagsPorTopico[tag.topico_id]) tagsPorTopico[tag.topico_id] = [];
+                tagsPorTopico[tag.topico_id].push(tag.nome);
+            });
+
+            // Add tags to topics
+            const topicosComTags = data.map((topico) => ({
+                ...topico,
+                tags: tagsPorTopico[topico.id] || [],
+            }));
+
+            return res.json(topicosComTags);
+        });
+    });
+};

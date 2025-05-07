@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Post from "../pages/Post";
-import axios from "axios";
-
 import "../styles/Home.css";
 import homeIcon from "../icons/home.png";
 import plusIcon from "../icons/plus.png";
@@ -35,18 +33,6 @@ function Home({ user }) {
       })
       .catch((err) => console.error("Erro ao buscar tópico recente:", err));
   }, []);
-
-  const handleLogin = async (values) => {
-    try {
-      const response = await axios.post("/server/login", values, { withCredentials: true });
-      const userData = response.data;
-      localStorage.setItem("user", JSON.stringify(userData));
-      setUser(userData); // Atualiza o estado global do usuário
-      navigate("/"); // Redireciona para a página inicial
-    } catch (err) {
-      console.error("Erro ao fazer login:", err);
-    }
-  };
 
   return (
     <section id="container">

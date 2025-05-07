@@ -11,6 +11,7 @@ import CriarCategoria from "./components/CriarCategoria";
 import CreateTopic from "./pages/CreateTopic";
 import Busca from "./pages/Busca";
 import PostDetails from "./pages/PostDetails";
+import BuscaRes from "./pages/BuscaRes";
 import "./App.css";
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/criar-categoria" element={<CriarCategoria />} />
         <Route path="/busca" element={<Busca />} />
         <Route path="/post/:id" element={<PostDetails user={user} />} />
+        <Route path="/busca-res" element={<BuscaRes />} />
       </Routes>
     </Router>
   );
