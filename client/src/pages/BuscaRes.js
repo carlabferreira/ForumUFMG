@@ -41,6 +41,7 @@ function BuscaRes() {
                         categoria={topico.categoria_nome}
                         nome={topico.usuario_nome}
                         tags={topico.tags}
+                        criado_em={topico.criado_em}
                     />
                 ))
             ) : (
