@@ -5,6 +5,7 @@ import rotasTags from "./routes/tags.js";
 import rotasResposta from "./routes/respostas.js";
 import cookieParser from 'cookie-parser';
 import rotasCategoria from "./routes/categoria.js";
+import rotasUsuario from "./routes/usuario.js";
 import cors from "cors";
 
 const app = express();
@@ -25,6 +26,7 @@ app.use("/server/topicos", rotasTopico);
 app.use("/server/tags", rotasTags);
 app.use("/server/categorias", rotasCategoria);
 app.use("/server/respostas", rotasResposta);
+app.use("/server/usuarios", rotasUsuario);
 
 app.listen(3002, () => {
     console.log("rodando na porta 3002");
