@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Post from "../pages/Post";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
 import "../styles/Home.css";
 import homeIcon from "../icons/home.png";
 import plusIcon from "../icons/plus.png";
@@ -36,6 +39,7 @@ function Home({ user }) {
 
   return (
     <section id="container">
+      {/*Header com logo e navegação*/}
       <header className="small-header">
         <img
           id="logo"
@@ -80,6 +84,7 @@ function Home({ user }) {
           </ul>
         </nav>
       </header>
+      {/* Conteúdo principal do site */}
       <main>
         <div className="sobre-nos">
           <h2>Sobre nós</h2>
@@ -95,21 +100,40 @@ function Home({ user }) {
           <h2>Sugestões</h2>
           <p>
             O Fórum UFMG é um projeto em desenvolvimento e estamos abertos a sugestões e feedbacks!
+            <p>
             Caso queira sugerir uma tag ou ideia para aprimoramento do Fórum, por favor entre em contato pelo e-mail <a href="mailto:sugestoes@forum.ufmg.com">sugestoes@forum.ufmg.com</a>
+            </p>
           </p>
         </div>
+        {/* Tópico mais recente */}
         <div className="recente">
           <h2>Tópico mais recente</h2>
           {topicoRecente && (
             <div className="topico-recente">
               <h3>{topicoRecente.titulo}</h3>
               <p>{topicoRecente.descricao}</p>
-              <p>
+              <p className="categoria">
                 Categoria: {topicoRecente.categoria} | Criado por: {topicoRecente.nome}
               </p>
+              {topicoRecente.tags && topicoRecente.tags.length > 0 && (
+                <div className="tag-post-recente">
+                  <h4>Tags:</h4>
+                  <ul>
+                    {topicoRecente.tags.map((tag, index) => (
+                      <li key={index} className="tag">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <Link to={`/post/${topicoRecente.id}`} className="link-ver-mais">
+                Ver mais
+              </Link>
             </div>
           )}
         </div>
+        {/* Lista com todos os tópicos */}
         <div className="todos-topicos">
           <h2>Todos os tópicos</h2>
           {topicos.length > 0 ? (
@@ -129,8 +153,9 @@ function Home({ user }) {
           )}
         </div>
       </main>
+      {/* Rodapé do site */}
       <footer>
-        <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik</a> 
+        <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a> 
         from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
         <p>&copy; 2025 Fórum UFMG. Todos os direitos reservados.</p>
       </footer>

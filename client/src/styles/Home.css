@@ -14,7 +14,7 @@ body {
 #container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 100px auto auto auto auto;;
+  grid-template-rows: 100px auto auto auto auto;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -137,24 +137,47 @@ main {
   box-sizing: border-box;
 }
 
+/* Estilo para o parágrafo de categoria */
+.categoria{
+    font-style: italic;
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para a seção "Tags" */
+.tag-post-recente ul{
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag-post-recente h4 {
+  margin-top: 10px;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.tag-post-recente .tag{
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
 /*** TODOS OS TÓPICOS ***/
 .todos-topicos{
   grid-column: 1/2;
   grid-row: 2/5;
 }
 
-/*** SOBRE NÓS E SUGESTÕES ***/
-/* Ajuste na caixa "Sobre Nós" */
-.sobre-nos {
-  grid-column: 2 / 2;
-  grid-row: 2 / 4;
-  font-size: 13px;
-  background-color: #f4f4f4;
-  padding: 15px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-sizing: border-box;
+.todos-topicos h2{
+  margin-top: 0px;
 }
+
+/*** SOBRE NÓS E SUGESTÕES ***/
 
 /* Ajuste na caixa "Sugestões" */
 .sugestoes {
@@ -165,7 +188,20 @@ main {
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 10px 0; /* Reduz o espaço vertical */
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+/* Ajuste na caixa "Sobre Nós" */
+.sobre-nos {
+  grid-column: 2 / 2;
+  grid-row: 2 / 4;
+  font-size: 13px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 12px;
   box-sizing: border-box;
 }
 
@@ -192,6 +228,10 @@ footer p {
 footer div{
   padding-top: 5px;
   padding-bottom: 10px;
+}
+
+footer a{
+  color:#f4f4f4;
 }
   
 /*** RESPONSIVIDADE ***/
