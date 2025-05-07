@@ -1,3 +1,4 @@
+/*** ESTILO GERAL DO POST ***/
 .post {
     border: 1px solid #ddd;
     padding: 15px;
@@ -8,26 +9,44 @@
 }
   
 .post h3 {
-    margin: 0 0 10px;
+    margin: 10px 0;
+    font-size: 18px;
 }
   
 .post p {
     margin: 5px 0;
+    font-size: 14px;
     color: #555;
 }
-  
+ 
+/*** ESTILO DAS TAGS E CATEGORIA ***/
 .tags ul {
     list-style: none;
     padding: 0;
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
-  
+
+/* Estilo para o parágrafo de categoria */
+.categoria{
+    font-style: italic;
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .tags .tag {
     background-color: #e0e0e0;
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 0.6em;
+    font-size: 12px;
+}
+
+.tags h4 {
+    margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 8px;
 }
 
 .link-ver-mais {
@@ -35,13 +54,13 @@
     font-size: small; /* Tamanho pequeno */
     text-decoration: none; /* Remove o sublinhado */
     font-weight: bold; /* Deixa o texto em negrito */
-  }
+}
   
-  .link-ver-mais:hover {
+.link-ver-mais:hover {
     text-decoration: underline; /* Sublinhado ao passar o mouse */
-  }
+}
 
-  .post-details {
+.post-details {
     margin-left: 20px; /* Adiciona uma margem lateral esquerda */
     margin-right: 20px; /* Opcional: Adiciona uma margem lateral direita */
     padding: 15px; /* Adiciona um espaçamento interno */
@@ -49,9 +68,9 @@
     border-radius: 5px; /* Bordas arredondadas */
     background-color: #fff; /* Fundo branco */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
-  }
+}
 
-  .delete-button {
+.delete-button {
     background-color: #ad0c27; /* Vermelho */
     color: #fff;
     border: none;

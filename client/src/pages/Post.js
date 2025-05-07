@@ -7,7 +7,7 @@ function Post({ id, titulo, descricao, categoria, nome, tags }) {
     <div className="post">
       <h3>{titulo}</h3>
       <p>{descricao}</p>
-      <p>Categoria: {categoria} | Criado por: {nome}</p>
+      <p className="categoria">Categoria: {categoria} | Criado por: {nome} </p>
       {tags && tags.length > 0 && (
         <div className="tags">
           <h4>Tags:</h4>
