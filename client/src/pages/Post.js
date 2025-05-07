@@ -20,9 +20,12 @@ function Post({ id, titulo, descricao, categoria, nome, tags }) {
           </ul>
         </div>
       )}
-      <Link to={`/post/${id}`} className="link-ver-mais">
-        Ver mais
-      </Link>
+      <div className="links-e-botoes">
+        <Link to={`/post/${id}`} className="link-ver-mais">
+          Ver mais
+        </Link>
+        <button className="responder-btn" onClick={() => window.location.href = `/post/${id}#responder`}> Responder </button>
+      </div>
     </div>
   );
 }

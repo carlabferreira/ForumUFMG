@@ -1,12 +1,13 @@
 .create-topic-container {
   width: auto; /* Permite que a largura seja ajustada automaticamente */
-  max-width: 90%; /* Define um limite máximo para a largura */
+  max-width: 80%; /* Define um limite máximo para a largura */
   background-color: #ebebeb;
   padding: 25px 20px;
   border-radius: 10px;
   font-family: 'Open Sans', sans-serif;
   box-shadow: 10px 11px rgba(0, 0, 0, 0.7);
-  margin-top: 40px;
+  margin-top: 10px;
+  margin-bottom: 40px;
 
   /* Centralizar a caixa na tela */
   position: absolute;
@@ -75,7 +76,8 @@
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  margin-top: 15px;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 .button:hover {
@@ -86,8 +88,12 @@
   font-size: small;
 }
 
+.topic-redirect p{
+  margin: 0px;
+}
 .link-topic {
   color: #ad0c27;
+  margin-top: 1px;
 }
 
 #arrow {

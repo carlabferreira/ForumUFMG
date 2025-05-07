@@ -49,6 +49,14 @@
     margin-bottom: 8px;
 }
 
+/*** ESTILO DOS LINKS E BOTÕES ***/
+.links-e-botoes{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+/* Link "Ver mais" */
 .link-ver-mais {
     color: #ad0c27; /* Vermelho */
     font-size: small; /* Tamanho pequeno */
@@ -60,16 +68,26 @@
     text-decoration: underline; /* Sublinhado ao passar o mouse */
 }
 
-.post-details {
-    margin-left: 20px; /* Adiciona uma margem lateral esquerda */
-    margin-right: 20px; /* Opcional: Adiciona uma margem lateral direita */
-    padding: 15px; /* Adiciona um espaçamento interno */
-    border: 1px solid #ddd; /* Adiciona uma borda para destacar o post */
-    border-radius: 5px; /* Bordas arredondadas */
-    background-color: #fff; /* Fundo branco */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+/* Botão de resposta */
+.responder-btn {
+    margin-top: 5px;
+    padding: 8px 12px;
+    background-color: #ad0c27;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: small;
+    color: #fff;
+    /*margin-right: 650px;*/
+    font-weight: bold; /* Deixa o texto em negrito */
 }
 
+.responder-btn:hover {
+    background-color: #8b0a20; /* Vermelho mais escuro */
+}
+
+
+/* Botão de deletar */
 .delete-button {
     background-color: #ad0c27; /* Vermelho */
     color: #fff;
@@ -84,4 +102,90 @@
 
 .delete-button:hover {
     background-color: #8b0a20; /* Vermelho mais escuro */
+}
+
+/*** ESTILO DO POST EM SUA PÁGINA ÚNICA ***/
+.post-container {
+    grid-column: 2/5;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px; /* Adiciona um espaçamento interno */
+    border: 1px solid #ddd; /* Adiciona uma borda para destacar o post */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #fff; /* Fundo branco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+    max-width: 900px;
+}
+
+.descricao-post{
+    font-size: 20px;
+}
+
+.user-info-post{
+    font-size: 14px;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+/*** RESPOSTAS DO POST ***/
+
+/* Estilo para o container de respostas */
+.resposta-form {
+    margin-top: 20px;
+}
+  
+.resposta-form textarea {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+}
+  
+.resposta-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ad0c27;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.resposta-form button:hover {
+    background-color: #8b0a20;
+}
+
+.texto-sem-resposta{
+    font-size: 16px;
+}
+
+.lista-respostas {
+    margin-top: 10px;
+}
+
+.lista-respostas h4{
+    margin-bottom: 10px;
+}
+
+.user-info-resposta{
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: lighter;
+    font-style: italic;
+}
+  
+.resposta {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+  
+.resposta p {
+    margin: 5px 0;
+    font-size: 16px;
 }

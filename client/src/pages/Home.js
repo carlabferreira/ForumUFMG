@@ -108,7 +108,7 @@ function Home({ user }) {
         {/* Tópico mais recente */}
         <div className="recente">
           <h2>Tópico mais recente</h2>
-          {topicoRecente && (
+          {topicoRecente ? (
             <div className="topico-recente">
               <h3>{topicoRecente.titulo}</h3>
               <p>{topicoRecente.descricao}</p>
@@ -127,10 +127,15 @@ function Home({ user }) {
                   </ul>
                 </div>
               )}
-              <Link to={`/post/${topicoRecente.id}`} className="link-ver-mais">
-                Ver mais
-              </Link>
+              <div className="links-e-botoes"> 
+                <Link to={`/post/${topicoRecente.id}`} className="link-ver-mais">
+                  Ver mais
+                </Link>
+                <button className="responder-btn" onClick={() => window.location.href = `/post/${topicoRecente.id}#responder`}> Responder</button>
+              </div>
             </div>
+          ) : (
+            <p> Nenhum tópico recente encontrado </p>
           )}
         </div>
         {/* Lista com todos os tópicos */}
