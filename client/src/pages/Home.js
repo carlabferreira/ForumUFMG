@@ -104,6 +104,12 @@ function Home({ user }) {
             <p>
               Para entrar em contato, envie um e-mail para <a href="mailto:contato@forum.ufmg.com">contato@forum.ufmg.com</a>
             </p>
+            <p>
+            O Fórum UFMG é um projeto de código aberto, você pode ver o código fonte em{" "}
+            <a href="https://github.com/carlabferreira/ForumUFMG" target="_blank" rel="noopener noreferrer">
+              https://github.com/carlabferreira/ForumUFMG
+            </a>
+            </p>
           </p>
         </div>
         <div className="sugestoes">
